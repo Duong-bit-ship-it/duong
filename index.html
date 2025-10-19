@@ -12,8 +12,8 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    background: linear-gradient(135deg,#fff7fb,#fff0f5);
-    font-family: "Segoe UI", Roboto, sans-serif;
+    background:linear-gradient(135deg,#fff7fb,#ffe6ec);
+    font-family:"Segoe UI", Roboto, sans-serif;
     overflow:hidden;
   }
 
@@ -25,122 +25,80 @@
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
-    overflow:hidden;
   }
 
   .content{
-    position:relative;
     margin-top:6vh;
     width:90%;
     max-width:800px;
     height:70vh;
-    background:transparent;
-    border-radius:20px;
-    padding:16px;
     overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
     text-align:center;
     z-index:5;
+    padding:10px;
   }
 
   h1{
-    font-family:"Dancing Script", "Segoe UI", cursive;
-    font-size:48px;
+    font-family:"Dancing Script", cursive;
+    font-size:44px;
     color:#f35fa2;
-    margin-bottom:6px;
-    animation: fadeIn 2s ease-in;
+    margin:4px 0;
   }
 
   h2{
-    font-size:18px;
+    font-size:17px;
     color:#6b486b;
-    margin:4px 0 16px 0;
+    margin-bottom:16px;
   }
 
   #message{
-    text-align:center;
     font-size:18px;
     color:#333;
     line-height:1.6;
     white-space:pre-wrap;
   }
 
-  /* Cây trái tim */
   .tree-wrap{
     position:absolute;
-    bottom:-20px;
+    bottom:-10px;
     right:50%;
     transform:translateX(50%);
-    width:420px;
-    z-index:4;
-    pointer-events:none;
+    width:400px;
     animation:pulse 3s ease-in-out infinite;
+    pointer-events:none;
+    z-index:3;
   }
-  .tree-wrap img{
-    width:100%;
-    display:block;
-    user-select:none;
-  }
-  .tree-wrap::before{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:20%;
-    transform:translateX(-50%);
-    width:460px;
-    height:500px;
-    border-radius:50%;
-    background: radial-gradient(circle, rgba(255,182,193,0.5) 0%, rgba(255,192,203,0.15) 60%, transparent 100%);
-    filter: blur(35px);
-    animation: glow 3s ease-in-out infinite;
-    z-index:-1;
+  .tree-wrap img{width:100%;display:block;user-select:none;}
+
+  @keyframes pulse{
+    0%,100%{transform:translateX(50%) scale(1);}
+    50%{transform:translateX(50%) scale(1.03);}
   }
 
-  /* Hiệu ứng */
-  @keyframes pulse {
-    0%,100% { transform:translateX(50%) scale(1);}
-    50% { transform:translateX(50%) scale(1.03);}
-  }
-  @keyframes glow {
-    0%,100% {opacity:0.6;transform:scale(1);}
-    50% {opacity:1;transform:scale(1.15);}
-  }
-  @keyframes fadeIn {
-    from{opacity:0;transform:translateY(-10px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-
-  /* Tim rơi */
   .heart{
     position:absolute;
     will-change:transform,opacity;
     pointer-events:none;
-    z-index:5;
-    opacity:0.95;
+    z-index:2;
+    opacity:0.9;
   }
 
-  /* Nút gửi */
   .btn{
     position:absolute;
-    bottom:28px;
-    right:34px;
+    bottom:24px;
+    right:30px;
     background:#ff4f8b;
     border:none;
     color:white;
-    padding:10px 18px;
+    padding:10px 20px;
     border-radius:28px;
     cursor:pointer;
     font-size:15px;
     box-shadow:0 3px 6px rgba(0,0,0,0.25);
     z-index:10;
   }
-  .btn:active{ transform:translateY(2px); }
-
-  @media(max-width:768px){
-    h1{font-size:34px;}
-    h2{font-size:16px;}
-    #message{font-size:16px;}
-    .tree-wrap{width:300px;}
-  }
+  .btn:active{transform:translateY(2px);}
 </style>
 </head>
 <body>
@@ -155,21 +113,18 @@
       <img id="treeImg" src="pngtree-vector-love-tree-png-image_12898748.png" alt="Cây trái tim">
     </div>
 
-    <button class="btn" id="confettiBtn">💌 Gửi lời chúc</button>
+    <button class="btn" id="startBtn">💌 Gửi lời chúc</button>
 
-    <audio id="bgm" autoplay loop>
-      <source src="d:\gửi lời chúc\phong thuỷ\Nhac Chuong Yeu Em Rat Nhieu - Hoang Ton.mp3" type="audio/mpeg">
+    <audio id="bgm" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c0213e4ef9.mp3?filename=spring-love-20671.mp3" type="audio/mpeg">
     </audio>
   </div>
 
-  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <script>
-    const messageEl = document.getElementById('message');
-    const text =
-`Nhân ngày Phụ Nữ Việt Nam 20/10 💐  
-Anh xin gửi tới em — người con gái đặc biệt nhất trong lòng anh — những lời chúc chân thành nhất 💖
+    const messageEl=document.getElementById('message');
+    const text=`Nhân ngày Phụ Nữ Việt Nam 20/10 💐  
+Anh xin gửi tới em — người con gái đặc biệt nhất trong lòng anh — những lời chúc chân thành nhất 💖  
 
 🌷 Chúc em luôn xinh đẹp, rạng rỡ và tự tin như đóa hoa hồng buổi sớm.  
 💎 Chúc em có một hành trình ngập tràn niềm vui, hạnh phúc và may mắn.  
@@ -177,71 +132,66 @@ Anh xin gửi tới em — người con gái đặc biệt nhất trong lòng an
 
 💖 20/10 thật rực rỡ nhé, nàng của anh!`;
 
-    // Hiệu ứng gõ chữ
-    let idx = 0;
+    let idx=0;
     function typeChar(){
-      if(idx < text.length){
-        messageEl.textContent += text.charAt(idx);
+      if(idx<text.length){
+        messageEl.textContent+=text.charAt(idx);
         idx++;
-        setTimeout(typeChar, 55);
+        setTimeout(typeChar,55);
       }
     }
-    typeChar();
 
-    // Tim rơi
-    const treeImg = document.getElementById('treeImg');
-    const colors = ['💖','💗','💞','💕','💓','💘','❤️'];
+    const tree=document.getElementById('treeImg');
+    const colors=['💖','💗','💞','💕','💓','💘','❤️'];
     function createHeart(){
-      const rect = treeImg.getBoundingClientRect();
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = colors[Math.floor(Math.random()*colors.length)];
-      const size = 14 + Math.random()*16;
-      heart.style.fontSize = size + 'px';
-      heart.style.left = (rect.left + rect.width * (0.25 + Math.random()*0.5)) + 'px';
-      heart.style.top = (rect.top + rect.height * (0.1 + Math.random()*0.3)) + 'px';
+      const rect=tree.getBoundingClientRect();
+      const heart=document.createElement('div');
+      heart.className='heart';
+      heart.textContent=colors[Math.floor(Math.random()*colors.length)];
+      const size=14+Math.random()*16;
+      heart.style.fontSize=size+'px';
+      heart.style.left=(rect.left+rect.width*(0.25+Math.random()*0.5))+'px';
+      heart.style.top=(rect.top+rect.height*(0.1+Math.random()*0.3))+'px';
       document.body.appendChild(heart);
 
-      const translateX = -150 + Math.random()*300;
-      const translateY = window.innerHeight * 0.7 + Math.random()*100;
-      const rotate = 180 + Math.random()*360;
-      const duration = 4000 + Math.random()*2000;
+      const translateX=-120+Math.random()*240;
+      const translateY=window.innerHeight*0.6+Math.random()*100;
+      const rotate=180+Math.random()*360;
+      const duration=4500+Math.random()*2000;
 
       heart.animate([
-        { transform:`translate(0,0) rotate(0deg)`, opacity:1 },
-        { transform:`translate(${translateX}px,${translateY}px) rotate(${rotate}deg)`, opacity:0 }
-      ], {duration, easing:'linear', fill:'forwards'});
+        {transform:`translate(0,0) rotate(0deg)`,opacity:1},
+        {transform:`translate(${translateX}px,${translateY}px) rotate(${rotate}deg)`,opacity:0}
+      ],{duration,easing:'linear',fill:'forwards'});
 
-      setTimeout(()=>heart.remove(), duration);
+      setTimeout(()=>heart.remove(),duration);
     }
-    setInterval(createHeart, 400);
 
-    // Confetti
-    document.getElementById('confettiBtn').addEventListener('click', ()=>{
-      const duration = 1800;
-      const end = Date.now() + duration;
+    const bgm=document.getElementById('bgm');
+    const btn=document.getElementById('startBtn');
+    btn.addEventListener('click',()=>{
+      bgm.volume=0.6;
+      bgm.play().catch(()=>{});
+      typeChar();
+      setInterval(createHeart,700);
+      startConfetti();
+      btn.disabled=true;
+      btn.textContent="💞 Đang gửi...";
+    });
+
+    function startConfetti(){
+      const duration=1600;
+      const end=Date.now()+duration;
       (function frame(){
         confetti({
-          particleCount: 9,
-          startVelocity: 30,
-          spread: 120,
-          origin: { x: Math.random(), y: 0.1 }
+          particleCount:8,
+          startVelocity:25,
+          spread:120,
+          origin:{x:Math.random(),y:0.1}
         });
-        if(Date.now() < end) requestAnimationFrame(frame);
+        if(Date.now()<end)requestAnimationFrame(frame);
       })();
-    });
-
-    // Đảm bảo nhạc phát khi load
-    window.addEventListener('load', ()=>{
-      const bgm = document.getElementById('bgm');
-      bgm.volume = 0.5;
-      bgm.play().catch(()=>{});
-    });
-    // Xử lý autoplay nhạc (nếu bị chặn)
-    document.addEventListener('click', ()=>{
-      const bgm = document.getElementById('bgm');
-      if(bgm.paused){ bgm.play().catch(()=>{}); }
-    }, {once:true});
+    }
   </script>
 </body>
 </html>
