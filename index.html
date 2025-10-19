@@ -115,8 +115,9 @@
 
     <button class="btn" id="startBtn">💌 Gửi lời chúc</button>
 
-    <audio id="bgm" loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c0213e4ef9.mp3?filename=spring-love-20671.mp3" type="audio/mpeg">
+    <!-- ✅ Nhúng nhạc trực tiếp, không cần token -->
+    <audio id="bgm" loop preload="auto" playsinline>
+      <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
     </audio>
   </div>
 
@@ -170,7 +171,7 @@ Anh xin gửi tới em — người con gái đặc biệt nhất trong lòng an
     const bgm=document.getElementById('bgm');
     const btn=document.getElementById('startBtn');
     btn.addEventListener('click',()=>{
-      bgm.volume=0.6;
+      bgm.volume=0.7;
       bgm.play().catch(()=>{});
       typeChar();
       setInterval(createHeart,700);
