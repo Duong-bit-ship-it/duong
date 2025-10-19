@@ -41,9 +41,9 @@
 
   h1{
     font-family:"Dancing Script", cursive;
-    font-size:44px;
+    font-size:28px; /* giảm nhẹ 2px như bạn muốn */
     color:#f35fa2;
-    margin:4px 0;
+    margin:8px 0 10px 0;
   }
 
   h2{
@@ -104,8 +104,7 @@
 <body>
   <div class="container">
     <div class="content">
-      <h1>Gửi Lời Chúc Tới Nàng 🌸</h1>
-      <h2>Ngày của em — hãy tỏa sáng như chính nụ cười ấy ✨</h2>
+      <h1>Ngày của em — hãy tỏa sáng như chính nụ cười ấy ✨ 🌸</h1>
       <div id="message"></div>
     </div>
 
@@ -113,11 +112,11 @@
       <img id="treeImg" src="pngtree-vector-love-tree-png-image_12898748.png" alt="Cây trái tim">
     </div>
 
-    <button class="btn" id="startBtn">💌 Gửi lời chúc</button>
+    <button class="btn" id="startBtn">💌 Gửi lời chúc tới nàng</button>
 
-    <!-- ✅ Nhúng nhạc trực tiếp, không cần token -->
+    <!-- 🎵 Nhạc nền trẻ trung, không bản quyền -->
     <audio id="bgm" loop preload="auto" playsinline>
-      <source src="https://nhacchuong123.com/nhac-chuong-yeu-em-rat-nhieu-hoang-ton" type="audio/mpeg">
+      <source src="https://cdn.pixabay.com/download/audio/2024/06/03/audio_75dcd8b1e3.mp3?filename=lofi-love-story-20339.mp3" type="audio/mpeg">
     </audio>
   </div>
 
@@ -132,12 +131,20 @@
 Chúc các chị luôn là những “nữ thần may mắn”, lan toả năng lượng tốt đẹp đến mọi người xung quanh 💖✨🌸
 💖 20/10 thật rực rỡ nhé`;
 
-    let idx=0;
+    let idx=0, started=false;
+
     function typeChar(){
       if(idx<text.length){
         messageEl.textContent+=text.charAt(idx);
         idx++;
         setTimeout(typeChar,55);
+      }else{
+        // 🔁 Khi chạy hết, chờ 3s rồi lặp lại
+        setTimeout(()=>{
+          messageEl.textContent="";
+          idx=0;
+          typeChar();
+        },3000);
       }
     }
 
@@ -169,7 +176,10 @@ Chúc các chị luôn là những “nữ thần may mắn”, lan toả năng 
 
     const bgm=document.getElementById('bgm');
     const btn=document.getElementById('startBtn');
+
     btn.addEventListener('click',()=>{
+      if(started) return;
+      started=true;
       bgm.volume=0.7;
       bgm.play().catch(()=>{});
       typeChar();
