@@ -3,111 +3,88 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>20 - 10 Womens Day 🌸</title>
+<title>Gửi Lời Chúc Tới Nàng 🌸</title>
 <style>
-  :root{
-    --card-w: 820px;
-    --card-h: 500px;
-  }
   body{
     margin:0;
     height:100vh;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     background: linear-gradient(135deg,#fff7fb,#fff0f5);
     font-family: "Segoe UI", Roboto, sans-serif;
+    overflow:hidden;
   }
 
- @media (max-width: 768px) {
-  :root {
-    --card-w: 95vw;
-    --card-h: 78vh;
+  .container{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    overflow:hidden;
   }
 
-  .card {
-    padding: 20px;
-    border-radius: 18px;
+  .content{
+    position:relative;
+    margin-top:6vh;
+    width:90%;
+    max-width:800px;
+    height:70vh;
+    background:transparent;
+    border-radius:20px;
+    padding:16px;
+    overflow-y:auto;
+    text-align:center;
+    z-index:5;
   }
-
-  .text-wrap {
-    right: 200px;
-  }
-
-  .tree-wrap {
-    width: 240px;
-    right: -8px;
-    bottom: -20px;
-  }
-}
-
-/* Giữ chữ co giãn theo màn hình, không bị cây che */
-.text-wrap {
-  position: absolute;
-  left: 4vw;              /* khoảng cách trái co theo màn hình */
-  top: 4vh;
-  bottom: 4vh;
-  right: 30%;             /* chừa ra 30% khung bên phải cho cây */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  word-wrap: break-word;
-  z-index: 6;
-  max-width: 60vw;        /* giới hạn vùng chữ tối đa */
-}
-
-.tree-wrap {
-  position: absolute;
-  right: 2px;
-  bottom: -10px;
-  width: 460px;
-  height: auto;
-  z-index: 4;             /* Hạ xuống để cây không đè chữ */
-  pointer-events: none;
-  animation: pulse 3s ease-in-out infinite;
-}
-
-
 
   h1{
-    margin:0 0 6px 0;
-    font-family: "Dancing Script", "Segoe UI", sans-serif;
-    font-size:40px;
-    color:#f59abb;
-  }
-  h2{
-    margin:0 0 10px 0;
-    font-size:16px;
-    color:#6b486b;
+    font-family:"Dancing Script", "Segoe UI", cursive;
+    font-size:48px;
+    color:#f35fa2;
+    margin-bottom:6px;
+    animation: fadeIn 2s ease-in;
   }
 
-  .message{
-    margin-top:6px;
+  h2{
+    font-size:18px;
+    color:#6b486b;
+    margin:4px 0 16px 0;
+  }
+
+  #message{
+    text-align:center;
     font-size:18px;
     color:#333;
-    line-height:1.3;
+    line-height:1.6;
     white-space:pre-wrap;
-    min-height:200px;
   }
 
-  /* 🌳 Cây và hiệu ứng nhịp đập */
+  /* Cây trái tim */
   .tree-wrap{
     position:absolute;
-    right:0;
-    bottom:-10px;
-    width:430px; /* to hơn chút */
-    height:auto;
-    z-index:5;
+    bottom:-20px;
+    right:50%;
+    transform:translateX(50%);
+    width:420px;
+    z-index:4;
     pointer-events:none;
-    animation: pulse 3s ease-in-out infinite;
+    animation:pulse 3s ease-in-out infinite;
   }
-
-  /* 💫 Ánh sáng lung linh quanh cây */
+  .tree-wrap img{
+    width:100%;
+    display:block;
+    user-select:none;
+  }
   .tree-wrap::before{
     content:"";
     position:absolute;
     left:50%;
-    bottom:25%;
+    bottom:20%;
     transform:translateX(-50%);
     width:460px;
     height:500px;
@@ -117,147 +94,90 @@
     animation: glow 3s ease-in-out infinite;
     z-index:-1;
   }
-.text-wrap {
-  position: absolute;
-  left: 24px;
-  top: 28px;
-  bottom: 28px;
-  right: 34%; /* thay vì px cố định, dùng % để tự co */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  word-wrap: break-word;
-  z-index: 6;
-}
-@media (max-width: 768px) {
-  :root {
-    --card-w: 94vw;
-    --card-h: 68vh;
-  }
 
-  .tree-wrap {
-    width: 260px;   /* thu nhỏ cây cho vừa khung */
-    right: -10px;   /* dịch sang phải chút */
-    bottom: -20px;
-  }
-
-  .text-wrap {
-    right: 200px;   /* chừa đủ chỗ cho cây */
-    font-size: 16px; /* chữ nhỏ lại nhẹ nhàng */
-  }
-
-  .message {
-    font-size: 16px;
-    line-height: 1.3;
-  }
-
-  .card {
-    padding: 20px;
-  }
-}
-
-  .tree-wrap img{
-    width:100%;
-    display:block;
-    user-select:none;
-  }
-
-  /* 💗 Nhịp đập nhẹ */
+  /* Hiệu ứng */
   @keyframes pulse {
-    0%,100% { transform: scale(1) translateY(0); }
-    50% { transform: scale(1.03) translateY(-3px); }
+    0%,100% { transform:translateX(50%) scale(1);}
+    50% { transform:translateX(50%) scale(1.03);}
   }
-
-  /* ✨ Ánh sáng mờ quanh cây */
   @keyframes glow {
-    0%,100% { opacity:0.6; transform:scale(1);}
-    50% { opacity:1; transform:scale(1.15);}
+    0%,100% {opacity:0.6;transform:scale(1);}
+    50% {opacity:1;transform:scale(1.15);}
+  }
+  @keyframes fadeIn {
+    from{opacity:0;transform:translateY(-10px);}
+    to{opacity:1;transform:translateY(0);}
   }
 
-  /* 💖 Tim rơi */
+  /* Tim rơi */
   .heart{
     position:absolute;
-    will-change: transform, opacity;
+    will-change:transform,opacity;
     pointer-events:none;
-    z-index:4;
+    z-index:5;
     opacity:0.95;
   }
 
-  /* 🌟 Hạt sáng nhỏ bay quanh cây */
-  .sparkle{
-    position:absolute;
-    border-radius:50%;
-    background: radial-gradient(circle, white, rgba(255,192,203,0.3));
-    opacity:0.8;
-    animation: sparkleMove 4s ease-in-out infinite;
-    pointer-events:none;
-    z-index:6;
-  }
-
-  @keyframes sparkleMove {
-    0% { transform:translate(0,0) scale(1); opacity:1;}
-    50% { transform:translate(-10px,-20px) scale(1.3); opacity:0.7;}
-    100% { transform:translate(0,0) scale(1); opacity:1;}
-  }
-
-  .controls{
-    position:absolute;
-    left:34px;
-    bottom:28px;
-    z-index:10;
-  }
+  /* Nút gửi */
   .btn{
+    position:absolute;
+    bottom:28px;
+    right:34px;
     background:#ff4f8b;
     border:none;
     color:white;
-    padding:8px 14px;
-    border-radius:24px;
+    padding:10px 18px;
+    border-radius:28px;
     cursor:pointer;
-    font-size:14px;
+    font-size:15px;
+    box-shadow:0 3px 6px rgba(0,0,0,0.25);
+    z-index:10;
   }
-  .btn:active{ transform:translateY(1px); }
+  .btn:active{ transform:translateY(2px); }
 
-  @media (max-width:900px){
-    :root{ --card-w: 92vw; --card-h: 64vh; }
-    .tree-wrap{ width: 260px; right:6px; }
-    .text-wrap{ right: 250px; }
+  @media(max-width:768px){
+    h1{font-size:34px;}
+    h2{font-size:16px;}
+    #message{font-size:16px;}
+    .tree-wrap{width:300px;}
   }
 </style>
 </head>
 <body>
-  <div class="card" id="card">
-    <div class="text-wrap">
-      <h1>Chúc mừng 20/10!</h1>
-      <h2>Ngày của bạn — hãy tỏa sáng ✨</h2>
-      <div id="message" class="message"></div>
+  <div class="container">
+    <div class="content">
+      <h1>Gửi Lời Chúc Tới Nàng 🌸</h1>
+      <h2>Ngày của em — hãy tỏa sáng như chính nụ cười ấy ✨</h2>
+      <div id="message"></div>
     </div>
 
-    <!-- 🌳 Cây trái tim -->
-    <div class="tree-wrap" id="treeWrap">
+    <div class="tree-wrap">
       <img id="treeImg" src="pngtree-vector-love-tree-png-image_12898748.png" alt="Cây trái tim">
     </div>
 
-    <div class="controls">
-      <button class="btn" id="confettiBtn">Bắn confetti 🎉</button>
-    </div>
+    <button class="btn" id="confettiBtn">💌 Gửi lời chúc</button>
 
-    <!-- 🎵 Nhạc nền -->
     <audio id="bgm" autoplay loop>
-      <source src="https://zingmp3.vn/album/Yeu-Em-Rat-Nhieu-Single-Hoang-Ton/ZO6977A8.html" type="audio/mpeg">
+      <source src="d:\gửi lời chúc\phong thuỷ\Nhac Chuong Yeu Em Rat Nhieu - Hoang Ton.mp3" type="audio/mpeg">
     </audio>
   </div>
 
+  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <script>
-    // Gõ chữ từng ký tự
     const messageEl = document.getElementById('message');
     const text =
-`Nhân ngày Phụ Nữ Việt Nam 20/10, em xin kính chúc các chị trong đại gia đình Phong Thuỷ Phạm Thu Hiền luôn:
+`Nhân ngày Phụ Nữ Việt Nam 20/10 💐  
+Anh xin gửi tới em — người con gái đặc biệt nhất trong lòng anh — những lời chúc chân thành nhất 💖
 
-🌷 Xinh đẹp – Tự tin – May mắn như những viên đá phong thuỷ lấp lánh năng lượng tích cực.
-💎 Công việc thuận lợi, vượng tài – khai lộc – phát đạt.
-💐 Cuộc sống ngập tràn niềm vui, sức khỏe và hạnh phúc viên mãn.
-Chúc các chị luôn là những “nữ thần may mắn”, lan toả năng lượng tốt đẹp đến mọi người xung quanh 💖✨🌸`;
+🌷 Chúc em luôn xinh đẹp, rạng rỡ và tự tin như đóa hoa hồng buổi sớm.  
+💎 Chúc em có một hành trình ngập tràn niềm vui, hạnh phúc và may mắn.  
+🌸 Dù thời gian trôi đi, anh vẫn luôn mong mỗi ngày em đều nở nụ cười thật tươi — vì với anh, chỉ cần em vui là thế giới cũng trở nên dịu dàng hơn. 💫  
+
+💖 20/10 thật rực rỡ nhé, nàng của anh!`;
+
+    // Hiệu ứng gõ chữ
     let idx = 0;
     function typeChar(){
       if(idx < text.length){
@@ -268,66 +188,60 @@ Chúc các chị luôn là những “nữ thần may mắn”, lan toả năng 
     }
     typeChar();
 
-    // 💞 Tim rơi nhẹ từ cây xuống
-    const card = document.getElementById('card');
+    // Tim rơi
     const treeImg = document.getElementById('treeImg');
-
-    function createHeartFromTree(){
-      const treeRect = treeImg.getBoundingClientRect();
-      const cardRect = card.getBoundingClientRect();
+    const colors = ['💖','💗','💞','💕','💓','💘','❤️'];
+    function createHeart(){
+      const rect = treeImg.getBoundingClientRect();
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.textContent = '💖';
-      const size = 12 + Math.random()*18;
+      heart.textContent = colors[Math.floor(Math.random()*colors.length)];
+      const size = 14 + Math.random()*16;
       heart.style.fontSize = size + 'px';
-      const startX = (treeRect.left - cardRect.left) + (treeRect.width * (0.25 + Math.random()*0.55));
-      const startY = (treeRect.top - cardRect.top) + (treeRect.height * (0.1 + Math.random()*0.3));
-      heart.style.left = startX + 'px';
-      heart.style.top = startY + 'px';
-      card.appendChild(heart);
+      heart.style.left = (rect.left + rect.width * (0.25 + Math.random()*0.5)) + 'px';
+      heart.style.top = (rect.top + rect.height * (0.1 + Math.random()*0.3)) + 'px';
+      document.body.appendChild(heart);
 
-      const translateX = -50 - Math.random()*160;
-      const translateY = (cardRect.height * 0.7) + (Math.random()*60);
-      const rotateDeg = 180 + Math.random()*360;
-      const duration = 3500 + Math.random()*3000;
+      const translateX = -150 + Math.random()*300;
+      const translateY = window.innerHeight * 0.7 + Math.random()*100;
+      const rotate = 180 + Math.random()*360;
+      const duration = 4000 + Math.random()*2000;
 
       heart.animate([
-        { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
-        { transform: `translate(${translateX}px, ${translateY}px) rotate(${rotateDeg}deg)`, opacity: 0 }
-      ], { duration, easing: 'linear', fill: 'forwards' });
+        { transform:`translate(0,0) rotate(0deg)`, opacity:1 },
+        { transform:`translate(${translateX}px,${translateY}px) rotate(${rotate}deg)`, opacity:0 }
+      ], {duration, easing:'linear', fill:'forwards'});
 
-      setTimeout(()=>heart.remove(), duration + 100);
+      setTimeout(()=>heart.remove(), duration);
     }
-    setInterval(createHeartFromTree, 450);
+    setInterval(createHeart, 400);
 
-    // 🌟 Hạt sáng lung linh quanh cây
-    const treeWrap = document.getElementById('treeWrap');
-    function createSparkle(){
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      const size = 3 + Math.random()*4;
-      sparkle.style.width = sparkle.style.height = size + 'px';
-      sparkle.style.left = (240 + Math.random()*180) + 'px';
-      sparkle.style.bottom = (220 + Math.random()*180) + 'px';
-      treeWrap.appendChild(sparkle);
-      setTimeout(()=>sparkle.remove(), 4000);
-    }
-    setInterval(createSparkle, 350);
-
-    // 🎉 Confetti
+    // Confetti
     document.getElementById('confettiBtn').addEventListener('click', ()=>{
-      const duration = 1200;
+      const duration = 1800;
       const end = Date.now() + duration;
       (function frame(){
         confetti({
-          particleCount: 7,
+          particleCount: 9,
           startVelocity: 30,
-          spread: 110,
-          origin: { x: Math.random(), y: 0.2 }
+          spread: 120,
+          origin: { x: Math.random(), y: 0.1 }
         });
-        if (Date.now() < end) requestAnimationFrame(frame);
+        if(Date.now() < end) requestAnimationFrame(frame);
       })();
     });
+
+    // Đảm bảo nhạc phát khi load
+    window.addEventListener('load', ()=>{
+      const bgm = document.getElementById('bgm');
+      bgm.volume = 0.5;
+      bgm.play().catch(()=>{});
+    });
+    // Xử lý autoplay nhạc (nếu bị chặn)
+    document.addEventListener('click', ()=>{
+      const bgm = document.getElementById('bgm');
+      if(bgm.paused){ bgm.play().catch(()=>{}); }
+    }, {once:true});
   </script>
 </body>
 </html>
