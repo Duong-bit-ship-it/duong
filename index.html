@@ -108,6 +108,44 @@
     animation: glow 3s ease-in-out infinite;
     z-index:-1;
   }
+.text-wrap {
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  bottom: 28px;
+  right: 34%; /* thay vì px cố định, dùng % để tự co */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  word-wrap: break-word;
+  z-index: 6;
+}
+@media (max-width: 768px) {
+  :root {
+    --card-w: 94vw;
+    --card-h: 68vh;
+  }
+
+  .tree-wrap {
+    width: 260px;   /* thu nhỏ cây cho vừa khung */
+    right: -10px;   /* dịch sang phải chút */
+    bottom: -20px;
+  }
+
+  .text-wrap {
+    right: 200px;   /* chừa đủ chỗ cho cây */
+    font-size: 16px; /* chữ nhỏ lại nhẹ nhàng */
+  }
+
+  .message {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
 
   .tree-wrap img{
     width:100%;
