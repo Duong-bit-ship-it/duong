@@ -19,32 +19,41 @@
     font-family: "Segoe UI", Roboto, sans-serif;
   }
 
-  /* Khung thiệp */
-  .card{
-    position:relative;
-    width:var(--card-w);
-    height:var(--card-h);
-    border-radius:24px;
-    padding:34px;
-    box-sizing:border-box;
-    background: linear-gradient(145deg,#fff0f6,#ffe6ec);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    overflow:hidden;
+ @media (max-width: 768px) {
+  :root {
+    --card-w: 95vw;
+    --card-h: 78vh;
   }
 
-  /* Giữ chữ không bị cây che, cho phép xuống dòng linh hoạt */
+  .card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
   .text-wrap {
+    right: 200px;
+  }
+
+  .tree-wrap {
+    width: 240px;
+    right: -8px;
+    bottom: -20px;
+  }
+}
+
+/* Giữ chữ co giãn theo màn hình, không bị cây che */
+.text-wrap {
   position: absolute;
-  left: 34px;
-  top: 34px;
-  bottom: 34px;
-  width: 420px;           /* Giới hạn vùng chữ, cố định bên trái */
-  right: auto;
+  left: 4vw;              /* khoảng cách trái co theo màn hình */
+  top: 4vh;
+  bottom: 4vh;
+  right: 30%;             /* chừa ra 30% khung bên phải cho cây */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   word-wrap: break-word;
-  z-index: 6;             /* Cho chữ nổi lên trên tim rơi (nếu có) */
+  z-index: 6;
+  max-width: 60vw;        /* giới hạn vùng chữ tối đa */
 }
 
 .tree-wrap {
